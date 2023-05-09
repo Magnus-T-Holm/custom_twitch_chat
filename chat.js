@@ -10,7 +10,7 @@ let SevenTVEmotes = Array();
 
 validateToken();
 
-ComfyJS.Init(config.OAUTH, config.TWITCH_LOGIN);
+ComfyJS.Init(config.BOTLOGIN, config.BOTOAUTH, config.TWITCH_LOGIN);
 
 ComfyJS.onChat = (user, message, flags, self, extra) => {
     CreateChatText(message, user, extra.userColor, extra, flags);
@@ -59,7 +59,6 @@ async function CreateChatText(message, user, colour, extra, flags) {
 
     username.innerText = user;
     text.innerText = message;
-    console.log(badges);
     title.append(UserprofileLine);
     title.append(username);
     newMessage.append(title);
@@ -109,7 +108,7 @@ async function validateToken() {
     }
 }
 
-async function HttpAPICall(HttpCall, Twitch) {
+async function HttpCalling(HttpCall, Twitch) {
     if (Twitch == true) {
         const respon = await fetch(`${HttpCall}`, {
             headers: {
@@ -140,5 +139,3 @@ async function HttpAPICall(HttpCall, Twitch) {
         return respon;
     }
 }
-
-ComfyJS.Init("AvaterVT");
